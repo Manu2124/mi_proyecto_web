@@ -1,0 +1,242 @@
+
+/* Estilos del banner */
+.banner {
+  background-image: url('/img/fond.jpg'); /* Imagen de fondo del banner */
+  background-size: cover;
+  background-position: center;
+  color: rgb(29, 26, 26);
+  text-align: center;
+  padding: 50px 0;
+}
+
+.banner h1 {
+  font-size: 3em;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Estilos del nav */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background-color: rgba(0, 0, 0, 0.6); /* Fondo transparente oscuro */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #007BFF;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #0056b3;
+}
+
+/* Aquí ajustamos el estilo de los botones y contenedores */
+    
+.menu-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 50px auto;
+      width: 80%;
+    }
+
+    
+.menu-item {
+      text-align: center;
+    }
+
+.menu-item img {
+      width: 200px;
+      height: 150px;
+      display: block;
+      margin: 0 auto;
+    }
+
+.menu-item p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+.menu-item a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+.menu-item a:hover {
+      background-color: #0056b3;
+    }
+
+    /* Estilo general de la página */
+body {
+      font-family: Arial, sans-serif;
+    }
+
+h1 {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+.menu-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 20px;
+      background-color: #f9f9f9;
+  }
+  
+.menu-item {
+      text-align: center;
+      margin: 0 20px;
+  }
+  
+.menu-item img {
+      width: 150px;
+      height: auto;
+      margin-bottom: 10px;
+  }
+  
+.menu-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+  }
+  
+.menu-button:hover {
+      background-color: #0056b3;
+  }
+
+.img { width: 200px; }
+
+body {
+    background-image: url('/mi_proyecto/img/red.jpg');
+    background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Mantiene la imagen fija al hacer scroll */
+  }
+  
+
+body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+    }
+.menu-container {
+        margin: 20px;
+    }
+
+.menu-item {
+        cursor: pointer;
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+        margin-bottom: 5px; /* Espaciado entre opciones */
+    }
+    
+.dropdown {
+        display: none; /* Inicialmente oculto */
+        opacity: 0; /* Inicialmente oculto para animación */
+        transition: opacity 0.5s ease, max-height 0.5s ease; /* Transición de opacidad y altura */
+        max-height: 0; /* Altura máxima para la animación */
+        overflow: hidden; /* Ocultar contenido excedente */
+        margin-top: 5px; /* Espacio entre el botón y el menú */
+        background-color: #0088f7;
+        border: 1px solid #363232;
+        border-radius: 5px;
+    }
+    
+.dropdown-item {
+        padding: 10px;
+        cursor: pointer;
+    }
+    
+.dropdown-item:hover {
+        background-color: #e7e7e7;
+    }
+
+-------
+.menu-item2 {
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 5px; /* Espaciado entre opciones */
+}
+
+.dropdown2 {
+    display: none; /* Inicialmente oculto */
+    opacity: 0; /* Inicialmente oculto para animación */
+    transition: opacity 0.5s ease, max-height 0.5s ease; /* Transición de opacidad y altura */
+    max-height: 0; /* Altura máxima para la animación */
+    overflow: hidden; /* Ocultar contenido excedente */
+    margin-top: 5px; /* Espacio entre el botón y el menú */
+    background-color: #0088f7;
+    border: 1px solid #363232;
+    border-radius: 5px;
+}
+
+.dropdown-item2 {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-item2:hover {
+    background-color: #e7e7e7;
+}
+    
+.banner {
+        margin: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+.container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        margin: auto;
+        display: none; /* Inicialmente oculto */
+    }
+    
+input, textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    
+button {
+        background-color: #2bcef7;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+

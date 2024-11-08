@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Insumos Consumibles</title>
+  <link rel="icon" href="./img/icon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./css/styles21.css">
+</head>
+<body>
+  <header>
+<!-- Navegación -->
+    <nav>
+      <a href="./profile.html">Mi Perfil</a>
+      <a href="./menu.html">Atrás</a>
+      <a href="./index.html">Cerrar sesión</a>
+
+      <!--<button onclick="history.back()">Atrás</button>-->
+    </nav>
+    
+  </header>
+  <div class="banner">
+  <h1>Bienvenido a Insumos Consumibles</h1>
+  </div>
+  <style>
+    body {
+      background-image: url('./img/red.jpg');
+      background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */
+      background-repeat: no-repeat; /* Evita que la imagen se repita */
+      background-attachment: fixed; /* Mantiene la imagen fija al hacer scroll */
+    }
+    .banner {
+      background-image: url('./img/fond.jpg'); /* Imagen de fondo del banner */
+      background-size: cover;
+      background-position: center;
+      color: rgb(29, 26, 26);
+      text-align: center;
+      padding: 50px 0;
+    }
+  </style>
+<!---->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<center>
+<div class="menu-container">
+    <!-- Opción 1: Medicamentos -->
+    <div class="menu-item" onclick="toggleDropdown()">
+        <p>Farmacia</p>
+    <!-- Menú Desplegable -->
+    <div class="dropdown" id="dropdownMenu">
+        <div class="dropdown-item" onclick="showForm('Solicitud')">Solicitud</div>
+        <div class="dropdown-item" onclick="showBanner('Consultar')">Consultar</div>
+        <div class="dropdown-item" onclick="showSoli('ConSoli')">Consultar Solicitud Aceptada</div>
+        <div class="dropdown-item" onclick="showBanner('Reportes')">Reportes</div>
+    </div>
+  </div>
+
+<!-- Botón de Almacén que abre el modal -->
+<div class="menu-item" onclick="toggleDropdownAlmacen()">
+  <p>Almacén</p>
+  <div class="dropdown" id="dropdownMenuAlmacen" style="display: none;">
+      <div class="dropdown-item" onclick="showModalAlmacen('SolicitudAlmacen')">Solicitud</div>
+      <div class="dropdown-item" onclick="showModalAlmacen('Consultar')">Consultar</div>
+      <div class="dropdown-item" onclick="showModalAlmacen('ConSoliAlmacen')">Consultar Solicitud Aceptada</div>
+      <div class="dropdown-item" onclick="showModalAlmacen('ReportesAlmacen')">Reportes</div>
+  </div>
+</div>
+
+<!-- Opción 2: Insumos Consumibles -->
+<!-- HTML -->
+<div class="menu-item" id="menu-inventario">
+  <a href="#" class="inventario-btn" id="inventario-btn">
+      <p>Inventario</p>
+  </a>
+  <!-- Menú desplegable -->
+  <div class="dropdown-menu" id="dropdown-inventario">
+      <a href="#" onclick="openNewWindow('Compras')">Abrir Compras</a>
+      <a href="#" onclick="openNewWindow('Facturas')">Abrir Facturas</a>
+      <a href="#" onclick="openNewWindow('Insumos Consumibles')">Abrir Insumos Consumibles</a>
+      <a href="#" onclick="openNewWindow('Insumos No Consumibles')">Abrir Insumos No Consumibles</a>
+      <a href="#" onclick="openNewWindow('Inventario')">Abrir Inventario</a>
+      <a href="#" onclick="openNewWindow('CargInventario')">Cargar Inventario</a>
+  </div>
+</div>
+
+<!-- CSS -->
+<style>
+  /* Estilos para hacer único el menú */
+  #menu-inventario {
+    position: relative;
+    display: inline-block;
+  }
+
+  #inventario-btn {
+    cursor: pointer;
+    background-color: #1567ff; /* Verde para destacar */
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+  }
+
+  #dropdown-inventario {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    min-width: 160px;
+  }
+
+  #dropdown-inventario a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  #dropdown-inventario a:hover {
+    background-color: #f1f1f1;
+  }
+
+  /* Mostrar el menú cuando se hace hover */
+  #menu-inventario:hover #dropdown-inventario {
+    display: block;
+  }
+</style>
+
+<!-- JS -->
+<script>
+  function openNewWindow(section) {
+    // Aquí puedes agregar la lógica para abrir una nueva ventana
+    alert('Abriendo ' + section);
+  }
+</script>
+
+<!-- JavaScript para abrir las nuevas ventanas -->
+<script>
+  function openNewWindow(section) {
+    // Crea una nueva ventana con un tamaño específico
+    var newWindow = window.open("", "", "width=400,height=300");
+
+    // Estilos de la nueva ventana
+    var styles = `
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f0f0f0; }
+        h2 { color: #333; }
+        form { margin-top: 10px; }
+        label { display: block; margin-bottom: 5px; }
+        input[type='text'] { width: 100%; padding: 8px; margin-bottom: 10px; }
+        input[type='submit'] { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        input[type='submit']:hover { background-color: #45a049; }
+        .close-window { margin-top: 20px; padding: 10px; background-color: #f44336; color: white; border: none; cursor: pointer; }
+        .close-window:hover { background-color: #d32f2f; }
+          body {
+                background-image: url('./img/R.jpg');
+                background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */
+                background-repeat: no-repeat; /* Evita que la imagen se repita */
+                background-attachment: fixed; /* Mantiene la imagen fija al hacer scroll */
+              }
+    `;
+
+    // Define contenido específico según la opción seleccionada
+    let content = '';
+
+    switch (section) {
+        case 'Compras':
+            content = `
+                <h2>Formulario de Compras</h2>                  
+                <form>
+                    <label for="purchase-item">Artículo:</label>
+                    <input type="text" id="purchase-item" name="purchase-item">
+                    <label for="quantity">Cantidad:</label>
+                    <input type="text" id="quantity" name="quantity">
+                    <input type="submit" value="Registrar Compra">
+                </form>
+            `;
+            break;
+        case 'Facturas':
+            content = `
+                <h2>Registro de Facturas</h2>
+                <form>
+                    <label for="invoice-number">Número de Factura:</label>
+                    <input type="text" id="invoice-number" name="invoice-number">
+                    <label for="amount">Monto:</label>
+                    <input type="text" id="amount" name="amount">
+                    <input type="submit" value="Registrar Factura">
+                </form>
+            `;
+            break;
+        case 'Insumos Consumibles':
+            content = `
+                <h2>Registro de Insumos Consumibles</h2>
+                <form>
+                    <label for="consumable-item">Nombre del Insumo:</label>
+                    <input type="text" id="consumable-item" name="consumable-item">
+                    <label for="stock">Cantidad en Stock:</label>
+                    <input type="text" id="stock" name="stock">
+                    <input type="submit" value="Guardar Insumo">
+                </form>
+            `;
+            break;
+        case 'Insumos No Consumibles':
+            content = `
+                <h2>Registro de Insumos No Consumibles</h2>
+                <form>
+                    <label for="non-consumable-item">Nombre del Insumo:</label>
+                    <input type="text" id="non-consumable-item" name="non-consumable-item">
+                    <label for="quantity">Cantidad:</label>
+                    <input type="text" id="quantity" name="quantity">
+                    <input type="submit" value="Guardar Insumo">
+                </form>
+            `;
+            break;
+        case 'Inventario':
+            content = `
+                <h2>Gestión de Inventario</h2>
+                <form>
+                    <label for="inventory-item">Artículo:</label>
+                    <input type="text" id="inventory-item" name="inventory-item">
+                    <label for="location">Ubicación:</label>
+                    <input type="text" id="location" name="location">
+                    <input type="submit" value="Actualizar Inventario">
+                </form>
+            `;
+            break;
+          
+            case 'CargInventario':
+            content = `
+                <h2>Cargar Inventario</h2>
+                <form action="cargar_inventario.php" method="POST" enctype="multipart/form-data">
+                    <label for="file">Seleccionar archivo CSV:</label>
+                    <input type="file" id="file" name="file" accept=".csv" required>
+                    <input type="submit" value="Cargar Inventario">
+                </form>
+
+                <!-- Botón para mostrar la base de datos -->
+                <h2>Ver Base de Datos</h2>
+                <form action="ver_base_datos.php" method="POST">
+                    <input type="submit" value="Mostrar Artículos">
+                </form>
+                
+            `;
+            break;
+        default:
+            content = `<p>Opción no válida.</p>`;
+    }
+
+    // Inserta el contenido en la nueva ventana
+    newWindow.document.write(`
+        <html>
+        <head>
+            <title>` + section + `</title>
+            <style>` + styles + `</style>
+        </head>
+        <body>
+            ` + content + `
+            <button class="close-window" onclick="window.close()">Cerrar</button>
+        </body>
+        </html>
+    `);
+
+    newWindow.focus();
+}
+
+</script>
+
+
+
+<!--Funciones de sitio-->
+
+<!-- Modal de Almacén -->
+<div id="almacenModal" class="modal" style="display: none;">
+  <div class="modal-content">
+      <span class="close-btn" onclick="closeModalAlmacen()">&times;</span>
+      <h2>Formulario de Solicitud - Almacén</h2>
+      <form id="solicitudFormAlmacen" method="post">
+          <label for="nombreAlmacen">Nombre de Solicitante:</label>
+          <input type="text" id="nombreAlmacen" name="nombreAlmacen" required>
+
+          <label for="servicioAlmacen">Servicio:</label>
+          <select id="servicioAlmacen" name="servicioAlmacen" required>
+              <option value="Administrativo">Administrativo</option>
+              <option value="Consulta externa">Consulta Externa</option>
+          <!-- Agrega más opciones si es necesario -->
+      </select>
+
+      <label for="articuloAlmacen">Artículo de Pedido:</label>
+      <input type="text" id="articuloAlmacen" name="articuloAlmacen" oninput="buscarArticuloAlmacen()" autocomplete="off" required>
+      <div id="sugerenciasAlmacen"></div>
+
+      <label for="unidadAlmacen">Cantidad Disponible:</label>
+      <input type="text" id="unidadAlmacen" name="unidadAlmacen" readonly>
+
+      <button type="submit">Enviar</button>
+  </form>
+</div>
+
+<script>
+  /*function toggleDropdownAlmacen() {
+    const dropdown = document.getElementById('dropdownMenuAlmacen');
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+}
+
+function showFormAlmacen(option) {
+    hideAllContentAlmacen();
+    const contactForm = document.getElementById('contactFormAlmacen');
+    contactForm.style.display = 'block';
+    document.getElementById('dropdownMenuAlmacen').style.display = 'none';
+}
+
+function showBannerAlmacen(option) {
+    hideAllContentAlmacen();
+    const banner = document.getElementById('infoBannerAlmacen');
+    banner.innerHTML = 'Has seleccionado: ' + option;
+    banner.style.display = 'block';
+    document.getElementById('dropdownMenuAlmacen').style.display = 'none';
+}
+
+function buscarArticuloAlmacen() {
+    const input = document.getElementById('articuloAlmacen').value;
+    if (input.length > 1) {
+        fetch('/mi_proyecto/php/buscar_articulos_almacen.php?q=' + input)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('sugerenciasAlmacen').innerHTML = data;
+            });
+    } else {
+        document.getElementById('sugerenciasAlmacen').innerHTML = '';
+    }
+}
+
+function seleccionarArticuloAlmacen(valor, unidad) {
+    document.getElementById('articuloAlmacen').value = valor;
+    document.getElementById('unidadAlmacen').value = unidad;
+    document.getElementById('sugerenciasAlmacen').innerHTML = '';
+    mostrarOtroArticuloAlmacen();
+}
+
+function mostrarOtroArticuloAlmacen() {
+    const input = document.getElementById('articuloAlmacen').value;
+    if (input === 'Otro') {
+        document.getElementById('otro-articulo-containerAlmacen').style.display = 'block';
+        document.getElementById('unidadAlmacen').value = '';
+    } else {
+        document.getElementById('otro-articulo-containerAlmacen').style.display = 'none';
+    }
+}
+
+function hideAllContentAlmacen() {
+    document.getElementById('contactFormAlmacen').style.display = 'none';
+    document.getElementById('infoBannerAlmacen').style.display = 'none';
+}*/
+
+function toggleDropdownAlmacen() {
+    const dropdown = document.getElementById('dropdownMenuAlmacen');
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+}
+
+function showModalAlmacen(option) {
+    // Muestra el modal y oculta el menú desplegable
+    document.getElementById('almacenModal').style.display = 'flex';
+    document.getElementById('dropdownMenuAlmacen').style.display = 'none';
+}
+
+function closeModalAlmacen() {
+    // Oculta el modal
+    document.getElementById('almacenModal').style.display = 'none';
+}
+
+</script>
+
+<style>
+  /* Fondo semi-transparente del modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenido del modal */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Botón de cerrar modal */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #000;
+}
+
+ /* .almacen-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%; /* Ajusta el ancho según el diseño 
+}
+
+#dropdownMenuAlmacen {
+    display: none;
+    background-color: #4dccff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    width: 100%;
+    max-width: 600px; /* Limita el ancho del formulario 
+    margin-top: 10px;
+}
+
+
+#contactFormAlmacen, #infoBannerAlmacen {
+    display: none;
+}*/
+
+/* Estilo específico para los modales de Almacén */
+/*#successModalAlmacen {
+    /* Tus estilos de modal para Almacén 
+}*/
+
+</style>
+
+
+<!-- Banner de información para Almacén -->
+<div class="banner" id="infoBannerAlmacen" style="display: none;"></div>
+
+<!-- Formulario de Solicitud para Almacén -->
+<div class="container" id="contactFormAlmacen" style="display: none;">
+  <h2>Formulario de Solicitud - Almacén</h2>
+  <form id="solicitudFormAlmacen" method="post">
+
+      <label for="nombre">Nombre de Solicitante:</label>
+      <input type="text" id="nombreAlmacen" name="nombre" required>
+
+      <label for="servicio">Servicio:</label>
+      <select id="servicioAlmacen" name="servicio" required>
+          <option value="" disabled selected></option>
+          <option value="Administrativo">Administrativo</option>
+          <option value="Consulta externa">Consulta Externa</option>
+          <option value="Hospitalizacion 1">Hospitalizacion 1</option>
+          <option value="Hospitalizacion 2">Hospitalizacion 2</option>
+          <option value="QX-(Quirofano)">QX-(Quirofano)</option>
+          <option value="Rayos X">Rayos X</option>
+          <option value="Sala de Partos">Sala de Partos</option>
+          <option value="Servicios Generales">Servicios Generales</option>
+          <option value="Laboratorio">Laboratorio</option>
+          <option value="UCI">UCI</option>
+          <option value="Urgencias">Urgencias</option>
+      </select>
+
+      <label for="pedido">Tipo de Pedido:</label>
+      <select id="pedidoAlmacen" name="pedido" required>
+          <option value="" disabled selected></option>
+          <option value="Pedido Insumos">Pedido Insumos</option>
+      </select>
+
+      <label for="articulo">Artículo de Pedido:</label>
+      <input type="text" id="articuloAlmacen" name="articulo" placeholder="Escribe el artículo" oninput="buscarArticuloAlmacen()" autocomplete="off" required>
+      <div id="sugerenciasAlmacen"></div>
+
+      <label for="unidad">Cantidad Disponible:</label>
+      <input type="text" id="unidadAlmacen" name="unidad" readonly>
+
+      <label for="cantidad">Cantidad a Solicitar:</label>
+      <input type="number" id="cantidadAlmacen" name="cantidad">
+
+      <label for="observaciones">Observaciones:</label>
+      <textarea id="observacionesAlmacen" name="observaciones" rows="4" required></textarea>
+
+      <center><button type="submit">Enviar</button></center>
+  </form>
+
+  <!-- Modal de éxito para Almacén -->
+  <div id="successModalAlmacen" class="modal">
+      <div class="modal-content">
+          <img src="./img/exito.gif" alt="Éxito" style="width: 50px; height: 50px;">
+          <p>Solicitud enviada con éxito.</p>
+      </div>
+  </div>
+</div>
+
+<script>
+  // Función para mostrar/ocultar el menú desplegable de Almacén
+function toggleDropdownAlmacen() {
+  const dropdown = document.getElementById('dropdownMenuAlmacen');
+  if (dropdown.style.display === 'block') {
+      dropdown.style.opacity = 0;
+      dropdown.style.maxHeight = 0;
+      setTimeout(() => {
+          dropdown.style.display = 'none';
+      }, 500);
+  } else {
+      dropdown.style.display = 'block';
+      setTimeout(() => {
+          dropdown.style.opacity = 1;
+          dropdown.style.maxHeight = '200px';
+      }, 10);
+  }
+}
+
+// Función para mostrar el formulario de Almacén
+function showFormAlmacen(option) {
+  hideAllContentAlmacen();
+  const contactForm = document.getElementById('contactFormAlmacen');
+  contactForm.style.display = 'block';
+  setTimeout(() => {
+      contactForm.style.opacity = 1;
+  }, 100);
+  document.getElementById('dropdownMenuAlmacen').style.display = 'none';
+}
+
+// Función para mostrar el banner de Almacén
+function showBannerAlmacen(option) {
+  hideAllContentAlmacen();
+  const banner = document.getElementById('infoBannerAlmacen');
+  banner.innerHTML = 'Has seleccionado: ' + option;
+  banner.style.display = 'block';
+  banner.style.opacity = 0;
+  setTimeout(() => {
+      banner.style.opacity = 1;
+  }, 300);
+  document.getElementById('dropdownMenuAlmacen').style.display = 'none';
+}
+
+// Función para buscar el artículo en Almacén
+function buscarArticuloAlmacen() {
+  var input = document.getElementById('articuloAlmacen').value;
+  if (input.length > 1) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', '/mis_proyectos/php/buscar_articulos.php?q=' + input, true);
+      xhr.onreadystatechange = function() {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+              document.getElementById('sugerenciasAlmacen').innerHTML = xhr.responseText;
+          }
+      };
+      xhr.send();
+  } else {
+      document.getElementById('sugerenciasAlmacen').innerHTML = '';
+  }
+}
+
+// Función para ocultar todo el contenido de Almacén antes de mostrar uno nuevo
+function hideAllContentAlmacen() {
+  const contactForm = document.getElementById('contactFormAlmacen');
+  const banner = document.getElementById('infoBannerAlmacen');
+  if (contactForm) contactForm.style.display = 'none';
+  if (banner) banner.style.display = 'none';
+}
+
+// Lógica para enviar el formulario de Almacén con AJAX
+document.getElementById('solicitudFormAlmacen').addEventListener('submit', function(event) {
+  event.preventDefault();
+  var formData = new FormData(this);
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/mis_proyectos/php/tu_script_almacen.php', true);
+  xhr.onload = function() {
+      if (xhr.status === 200) {
+          var modal = document.getElementById('successModalAlmacen');
+          modal.style.display = 'block';
+          setTimeout(function() {
+              modal.style.display = 'none';
+              window.location.reload();
+          }, 3000);
+      } else {
+          alert('Error al enviar la solicitud: ' + xhr.responseText);
+      }
+  };
+  xhr.send(formData);
+});
+
+</script>
+
+<style>
+  /* Estilos para el modal de éxito de Almacén */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.modal-content img {
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.modal-content p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+</style>
+
+<!-- Ventanas emergentes (formularios) 
+<div id="form1" class="modal">
+  <div class="modal-content">
+      <span class="close" onclick="closeForm('form1')">&times;</span>
+      <h2>Compras</h2>
+      <!-- Agrega tu formulario aquí 
+      <form>
+          <label for="consumable">Nombre del Insumo:</label>
+          <input type="text" id="consumable" name="consumable"><br>
+          <input type="submit" value="Enviar">
+      </form>
+  </div>
+</div>
+
+<div id="form2" class="modal">
+  <div class="modal-content">
+      <span class="close" onclick="closeForm('form2')">&times;</span>
+      <h2>Facturas</h2>
+      <!-- Agrega tu formulario aquí 
+      <form>
+          <label for="non-consumable">Nombre del Insumo:</label>
+          <input type="text" id="non-consumable" name="non-consumable"><br>
+          <input type="submit" value="Enviar">
+      </form>
+  </div>
+</div>
+
+<div id="form3" class="modal">
+  <div class="modal-content">
+      <span class="close" onclick="closeForm('form3')">&times;</span>
+      <h2>Insumos Consumibles</h2>
+      <!-- Agrega tu formulario aquí -
+      <form>
+          <label for="inventory">Nombre del Producto:</label>
+          <input type="text" id="inventory" name="inventory"><br>
+          <input type="submit" value="Enviar">
+      </form>
+  </div>
+</div>
+
+<div id="form4" class="modal">
+  <div class="modal-content">
+      <span class="close" onclick="closeForm('form4')">&times;</span>
+      <h2>Insumos No Consumibles</h2>
+      <!-- Agrega tu formulario aquí -
+      <form>
+          <label for="inventory">Nombre del Producto:</label>
+          <input type="text" id="inventory" name="inventory"><br>
+          <input type="submit" value="Enviar">
+      </form>
+  </div>
+</div>
+
+<div id="form5" class="modal">
+  <div class="modal-content">
+      <span class="close" onclick="closeForm('form5')">&times;</span>
+      <h2>Inventario</h2>
+      <!-- Agrega tu formulario aquí 
+      <form>
+          <label for="inventory">Nombre del Producto:</label>
+          <input type="text" id="inventory" name="inventory"><br>
+          <input type="submit" value="Enviar">
+      </form>
+  </div>
+</div>
+
+<!-- CSS para el menú desplegable y las ventanas emergentes 
+<style>
+.menu-item {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-menu a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f1f1f1;
+}
+
+.menu-item:hover .dropdown-menu {
+  display: block;
+}
+
+/* Estilos para las ventanas emergentes */
+.modal {
+  display: none;  /* Oculto por defecto */
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  text-align:left;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+
+<!-- JavaScript para manejar las ventanas emergentes 
+<script>
+function openForm(formId) {
+  document.getElementById(formId).style.display = "block";
+}
+
+function closeForm(formId) {
+  document.getElementById(formId).style.display = "none";
+}
+
+// Cerrar la ventana emergente si el usuario hace clic fuera de la ventana
+window.onclick = function(event) {
+  var modals = document.getElementsByClassName("modal");
+  for (var i = 0; i < modals.length; i++) {
+      if (event.target == modals[i]) {
+          modals[i].style.display = "none";
+      }
+  }
+}
+
+</script>-->
+
+</center>
+<div class="banner" id="infoBanner" style="display: none;"></div>
+
+<!-- Formulario de Solicitud -->
+  <div class="container" id="contactForm">
+    <h2>Formulario de Solicitud</h2>
+    <form id="solicitudForm" method="post">
+        <label for="nombre">Nombre de Solicitante:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="servicio">Servicio:</label>
+        <select id="servicio" name="servicio" required>
+            <option value="" disabled selected></option>
+            <option value="Administrativo">Administrativo</option>
+            <option value="Consulta externa">Consulta Externa</option>
+            <option value="Hospitalizacion 1">Hospitalizacion 1</option>
+            <option value="Hospitalizacion 2">Hospitalizacion 2</option>
+            <option value="QX-(Quirofano)">QX-(Quirofano)</option>
+            <option value="Rayos X">Rayos X</option>
+            <option value="Sala de Partos">Sala de Partos</option>
+            <option value="Servicios Generales">Servicios Generales</option>
+            <option value="Laboratorio">Laboratorio</option>
+            <option value="UCI">UCI</option>
+            <option value="Urgencias">Urgencias</option>
+        </select>
+
+        <label for="pedido">Tipo de Pedido:</label>
+        <select id="pedido" name="pedido" required>
+            <option value="" disabled selected></option>
+            <option value="Pedido Insumos">Pedido Insumos</option>
+        </select>
+        <br><br>
+
+          <!-- Campo adicional para mostrar la cantidad de unidades -->
+
+          <!-- Código HTML existente -->
+          <label for="articulo">Artículo de Pedido:</label>
+          <input type="text" id="articulo" name="articulo" placeholder="Escribe el artículo" oninput="buscarArticulo()" autocomplete="off" required>
+          <div id="sugerencias"></div>
+
+          <label for="unidad">Cantidad Disponible:</label>
+          <input type="text" id="unidad" name="unidad" readonly>
+
+          <div id="otro-articulo-container" style="display:none;">
+              <label for="otro-articulo">Especifica otro artículo:</label>
+              <input type="text" id="otro-articulo" name="otro_articulo">
+          </div>
+
+          <script>
+          function buscarArticulo() {
+              var input = document.getElementById('articulo').value;
+
+              if (input.length > 1) {
+                  var xhr = new XMLHttpRequest();
+                  xhr.open('GET', 'php/buscar_articulos.php?q=' + input, true);
+                  xhr.onreadystatechange = function() {
+                      if (xhr.readyState == 4 && xhr.status == 200) {
+                          document.getElementById('sugerencias').innerHTML = xhr.responseText;
+                      }
+                  };
+                  xhr.send();
+              } else {
+                  document.getElementById('sugerencias').innerHTML = '';
+              }
+          }
+
+          function seleccionarArticulo(valor, unidad) {
+              document.getElementById('articulo').value = valor;
+              document.getElementById('unidad').value = unidad; // Mostrar la cantidad de unidades
+              document.getElementById('sugerencias').innerHTML = '';
+              mostrarOtroArticulo();
+          }
+
+          function mostrarOtroArticulo() {
+              var input = document.getElementById('articulo').value;
+
+              if (input === 'Otro') {
+                  document.getElementById('otro-articulo-container').style.display = 'block';
+                  document.getElementById('unidad').value = ''; // Limpiar el campo de unidad
+              } else {
+                  document.getElementById('otro-articulo-container').style.display = 'none';
+              }
+          }
+          </script>
+
+  <br><br>
+
+        <label for="unidad">Unidad:</label>
+        <select id="unidad" name="unidad" required>
+          <option value="" disabled selected></option>
+          <option value="Unidad">Unidad</option>
+          <option value="Paquete">Paquete</option>
+          <option value="Caja">Caja</option>
+      </select>
+  <br><br>
+        <label for="cantidad">Cantidad a Solicitar:</label>
+        <input type="number" id="cantidad" name="cantidad">
+        <button type="button" onclick="agregarArticulo()">Agregar a la Lista</button>
+        <br><br>
+        <label for="observaciones">Observaciones:</label>
+        <textarea id="observaciones" name="observaciones" rows="4" required></textarea>
+        <center><h3>Lista de Artículos Solicitados</h3></center>
+        <table id="listaArticulos">
+            <thead>
+                <tr>
+                    <th>Artículo</th>
+                    <th>Unidad</th>
+                    <th>Cantidad</th>
+                    <th>Observaciones</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        
+        <center><button type="submit">Enviar</button></center>
+    </form>
+
+    <!-- Modal de éxito -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <img src="./img/exito.gif" alt="Éxito" style="width: 50px; height: 50px;">
+            <p>Solicitud enviada con éxito.</p>
+        </div>
+    </div>
+  </div>
+
+  <script>
+  // Interceptar el envío del formulario con AJAX
+  document.getElementById('solicitudForm').addEventListener('submit', function(event) {
+    event.preventDefault();  // Evitar el envío normal del formulario
+
+    var formData = new FormData(this);  // Recoger los datos del formulario
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', './php/tu_script.php', true);  // Mantener la vinculación a tu archivo PHP
+
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            // Mostrar el modal de éxito
+            var modal = document.getElementById('successModal');
+            modal.style.display = 'block';
+
+            // Ocultar el modal después de 3 segundos y recargar la página
+            setTimeout(function() {
+                modal.style.display = 'none';
+                window.location.reload();  // Recargar la página para limpiar el formulario
+            }, 3000);  // 3000 ms = 3 segundos
+        } else {
+            alert('Error al enviar la solicitud: ' + xhr.responseText);
+        }
+    };
+
+    xhr.send(formData);  // Enviar el formulario con AJAX
+  });
+  </script>
+
+<style>
+/* Estilos para el modal de éxito */
+.modal {
+  display: none;  /* Oculto por defecto */
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.modal-content img {
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.modal-content p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+</style>
+
+
+
+<script>
+    function toggleDropdown() {
+        const dropdown = document.getElementById('dropdownMenu');
+        if (dropdown.style.display === 'block') {
+            dropdown.style.opacity = 0; // Ocultar con animación
+            dropdown.style.maxHeight = 0; // Colapsar
+            setTimeout(() => {
+                dropdown.style.display = 'none'; // Ocultar después de la animación
+            }, 500); // Duración de la animación
+        } else {
+            dropdown.style.display = 'block'; // Mostrar el menú
+            setTimeout(() => {
+                dropdown.style.opacity = 1; // Mostrar con opacidad
+                dropdown.style.maxHeight = '200px'; // Expandir a una altura máxima
+            }, 10); // Breve retardo para aplicar la animación
+        }
+    }
+  // Función para mostrar el formulario con una animación suave
+  function showForm(option) {
+    const contactForm = document.getElementById('contactForm');
+    contactForm.style.display = 'block'; 
+    setTimeout(() => { // Se añade un pequeño retraso para activar la animación después de mostrar
+      contactForm.style.opacity = 1;
+    }, 100);
+
+    // Ocultar el menú desplegable
+    document.getElementById('dropdownMenu').style.display = 'none';
+  }
+
+  // Función para mostrar el banner de información con el texto del item seleccionado
+  function showBanner(option) {
+    const banner = document.getElementById('infoBanner');
+    banner.innerHTML = 'Has seleccionado: ' + option;
+    banner.style.display = 'block';
+    banner.style.opacity = 0;
+    setTimeout(() => {
+      banner.style.opacity = 1;
+    }, 300);
+
+    // Ocultar el menú desplegable
+    document.getElementById('dropdownMenu').style.display = 'none';
+  }
+
+
+    // Cerrar el menú al hacer clic fuera de él
+    window.onclick = function(event) {
+        if (!event.target.matches('.menu-item')) {
+            const dropdowns = document.getElementsByClassName("dropdown");
+            for (let i = 0; i < dropdowns.length; i++) {
+                const openDropdown = dropdowns[i];
+                if (openDropdown.style.display === 'block') {
+                    openDropdown.style.opacity = 0; // Ocultar con animación
+                    openDropdown.style.maxHeight = 0; // Colapsar
+                    setTimeout(() => {
+                        openDropdown.style.display = 'none'; // Ocultar después de la animación
+                    }, 500); // Duración de la animación
+                }
+            }
+        }
+    };
+  
+    
+let listaDeArticulos = [];
+
+function agregarArticulo() {
+    const articulo = document.getElementById("articulo").value;
+    const unidad = document.getElementById("unidad").value;
+    const cantidad = document.getElementById("cantidad").value;
+    const observaciones = document.getElementById("observaciones").value;
+
+    if (articulo && unidad && cantidad) {
+        listaDeArticulos.push({ articulo, unidad, cantidad, observaciones });
+
+        // Agregar a la tabla
+        const tabla = document.getElementById("listaArticulos").getElementsByTagName("tbody")[0];
+        const nuevaFila = tabla.insertRow();
+        nuevaFila.innerHTML = `
+            <td>${articulo}</td>
+            <td>${unidad}</td>
+            <td>${cantidad}</td>
+            <td>${observaciones}</td>
+        `;
+    } else {
+        alert("Por favor, completa todos los campos del artículo antes de agregarlo.");
+    }
+}
+
+document.getElementById('solicitudForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  // Agregar lista de artículos al formulario antes de enviarlo
+  const formData = new FormData(this);
+  formData.append("listaDeArticulos", JSON.stringify(listaDeArticulos));
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', './php/tu_script.php', true);
+
+  xhr.onload = function() {
+      if (xhr.status === 200) {
+          // Lógica del modal de éxito aquí
+      } else {
+          alert('Error al enviar la solicitud: ' + xhr.responseText);
+      }
+  };
+
+  xhr.send(formData);
+});
+
+
+</script>
+<script>
+  // Función para ocultar todo el contenido antes de mostrar uno nuevo
+  function hideAllContent() {
+    // Ocultar el formulario y el banner
+    const contactForm = document.getElementById('contactForm');
+    const banner = document.getElementById('infoBanner');
+
+    // Ocultar directamente sin animación
+    if (contactForm) {
+      contactForm.style.display = 'none';
+    }
+
+    if (banner) {
+      banner.style.display = 'none';
+    }
+  }
+
+  // Función para mostrar el formulario
+  function showForm(option) {
+    hideAllContent();  // Ocultar el contenido anterior
+    const contactForm = document.getElementById('contactForm');
+    contactForm.style.display = 'block';
+
+    // Ocultar el menú desplegable
+    document.getElementById('dropdownMenu').style.display = 'none';
+  }
+
+  // Función para mostrar el banner de información con el texto del ítem seleccionado
+  function showBanner(option) {
+    hideAllContent();  // Ocultar el contenido anterior
+    const banner = document.getElementById('infoBanner');
+    banner.innerHTML = 'Has seleccionado: ' + option;
+    banner.style.display = 'block';
+
+    // Ocultar el menú desplegable
+    document.getElementById('dropdownMenu').style.display = 'none';
+  }
+</script>
+
+<!-- Modal para la consulta de insumos -->
+<div id="consultaModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <h2>Consulta de Insumos</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Nombre Solicitante</th>
+          <th>Servicio</th>
+          <th>Artículo</th>
+          <th>Unidad</th>
+          <th>Cantidad Solicitada</th>
+          <th>Observaciones</th>
+          <th>Cantidad Entra</th>
+        </tr>
+      </thead>
+      <tbody></tbody> <!-- Los datos se cargarán aquí -->
+    </table>
+    <input type="text" id="buscarInput" placeholder="Buscar en la tabla">
+    <button onclick="generarConsulta()">Generar</button> <!-- Ejecuta la consulta al hacer clic -->
+    <button onclick="buscarEnTabla()">Buscar</button>
+    <button class="save-btn" onclick="guardarCantidad()">Guardar</button>
+    <button><a href="./Insumos2.html">Cerrar</a></button>  
+  </div>
+</div>
+
+<script>
+// Función para mostrar el modal y cargar datos desde la base de datos `users_db` con una consulta AJAX
+function generarConsulta() {
+  fetch('/mis_proyectos/php/obtener_datos.php')
+    .then(response => response.json())
+    .then(data => {
+      const tbody = document.querySelector('#consultaModal tbody');
+      tbody.innerHTML = ''; // Limpiar contenido anterior
+      data.forEach(solicitud => {
+        const row = `
+          <tr>
+            <td>${solicitud.nombre}</td>
+            <td>${solicitud.servicio}</td>
+            <td>${solicitud.articulo}</td>
+            <td>${solicitud.unidad}</td>
+            <td>${solicitud.cantidad}</td>
+            <td>${solicitud.observaciones}</td>
+            <td><input type="number" value="${solicitud.cantidad_entra || 0}" data-id="${solicitud.id}" class="cantidad-entra"></td>
+          </tr>
+        `;
+        tbody.innerHTML += row;
+      });
+    })
+    .catch(error => console.error('Error al generar consulta:', error));
+}
+
+// Función para guardar los datos editados en la base de datos `almacen_db`
+function guardarCantidad() {
+  const inputs = document.querySelectorAll('.cantidad-entra');
+  const updates = Array.from(inputs).map(input => {
+    const row = input.closest('tr'); // Obtener la fila correspondiente
+    return {
+      id: input.dataset.id,
+      nombre_solicitante: row.cells[0].innerText,
+      servicio: row.cells[1].innerText,
+      articulo: row.cells[2].innerText,
+      unidad: row.cells[3].innerText,
+      cantidad_solicitada: row.cells[4].innerText,
+      observaciones: row.cells[5].innerText,
+      cantidad_entra: input.value
+    };
+  });
+
+  fetch('/php/guardar_datos.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(updates)
+  })
+  .then(response => response.json())
+  .then(data => {
+    alert("Datos guardados correctamente");
+    console.log(data); // Para ver detalles sobre el guardado
+  })
+  .catch(error => console.error('Error al guardar datos:', error));
+}
+
+
+// Función para la búsqueda en la tabla
+function buscarEnTabla() {
+  const input = document.getElementById('buscarInput').value.toLowerCase();
+  const rows = document.querySelectorAll('#consultaModal tbody tr');
+  rows.forEach(row => {
+    const cells = row.getElementsByTagName('td');
+    let match = Array.from(cells).some(cell => cell.innerText.toLowerCase().includes(input));
+    row.style.display = match ? '' : 'none';
+  });
+}
+
+// Función para cerrar el modal
+function closeModal() {
+  const modal = document.getElementById('consultaModal');
+  modal.style.display = 'none';
+}
+
+// Función para mostrar el modal cuando se selecciona "Consultar"
+function showBanner(option) {
+  hideAllContent();  // Ocultar el contenido anterior
+
+  // Si se selecciona la opción de "Consultar"
+  if (option === 'Consultar') {
+      // Mostrar el modal
+      const modal = document.getElementById('consultaModal');
+      modal.style.display = 'block';
+
+      // Ocultar el menú desplegable
+      const dropdown = document.getElementById('dropdownMenu');
+      dropdown.style.opacity = 0; // Ocultar con animación
+      dropdown.style.maxHeight = 0; // Colapsar
+      setTimeout(() => {
+          dropdown.style.display = 'none'; // Ocultar después de la animación
+      }, 500); // Duración de la animación
+
+  } else {
+      // Mostrar el banner como antes
+      const banner = document.getElementById('infoBanner');
+      banner.innerHTML = 'Has seleccionado: ' + option;
+      banner.style.display = 'block';
+  }
+}
+
+// Función para cerrar el modal
+function closeModal() {
+  const modal = document.getElementById('consultaModal');
+  modal.style.display = 'none';
+}
+
+// Función para ocultar todo el contenido antes de mostrar uno nuevo
+function hideAllContent() {
+  // Ocultar el formulario y el banner
+  const contactForm = document.getElementById('contactForm');
+  const banner = document.getElementById('infoBanner');
+  const consultaModal = document.getElementById('consultaModal');
+
+  // Ocultar directamente sin animación
+  if (contactForm) {
+      contactForm.style.display = 'none';
+  }
+
+  if (banner) {
+      banner.style.display = 'none';
+  }
+
+  if (consultaModal) {
+      consultaModal.style.display = 'none';
+  }
+}
+
+</script>
+
+<style>
+/* Estilos para que el modal aparezca debajo del menú */
+.modal {
+  display: none;
+  position: relative;
+  z-index: 1;
+  width: 80%;
+  margin-top: 20px;
+  background-color: #fefefe;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 800px; /* Ajusta el tamaño según sea necesario */
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 8px;
+}
+
+.close-btn {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+}
+
+.close-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* Estilo de la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+/* Estilo para los inputs de cantidad */
+.cantidad-entra {
+  width: 100%; /* Hace que el input ocupe todo el ancho de la celda */
+  padding: 8px; /* Espacio interno en el input */
+  border: 1px solid #aaa; /* Borde del input */
+  border-radius: 4px; /* Bordes redondeados */
+  box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+}
+</style>
+
+
+<!-- Ventana emergente -->
+<div id="modal" style="display: none;">
+    <div id="modal-content">
+        <span onclick="closeModal()" style="cursor: pointer;">&times; </span>
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th>Nombre Solicitante</th>
+                    <th>Servicio</th>
+                    <th>Artículo</th>
+                    <th>Unidad</th>
+                    <th>Cantidad Solicitada</th>
+                    <th>Observaciones</th>
+                    <th>Cantidad Entra</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se llenarán los datos -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+function showSoli() {
+    fetch('/mis_proyectos/php/get_solicitudes.php') // Llama a tu script PHP
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.querySelector('#data-table tbody');
+            tableBody.innerHTML = ''; // Limpia la tabla
+
+            data.forEach(item => {
+                const status = item.cantidad_entra > 0 ? 'Aprobado' : 'No Aprobado';
+                const row = `<tr>
+                    <td>${item.nombre_solicitante}</td>
+                    <td>${item.servicio}</td>
+                    <td>${item.articulo}</td>
+                    <td>${item.unidad}</td>
+                    <td>${item.cantidad_solicitada}</td>
+                    <td>${item.observaciones}</td>
+                    <td>${item.cantidad_entra}
+                    <td>${status}</td>
+                </tr>`;
+                tableBody.innerHTML += row;
+            });
+
+            document.getElementById('modal').style.display = 'block'; // Muestra la ventana emergente
+        });
+}
+
+function closeModal() {
+    document.getElementById('modal').style.display = 'none'; // Cierra la ventana emergente
+}
+</script>
+
+<style>
+  /* Estilos para la ventana emergente */
+#modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+}
+
+/* Contenido de la ventana emergente */
+#modal-content {
+  background-color: #fff;
+  margin: 15% auto; /* Centrado vertical */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%; /* Ancho de la ventana */
+  max-width: 900px; /* Ancho máximo */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+/* Estilo para el botón de cerrar */
+#modal-content span {
+  float: right; /* Alinea a la derecha */
+  font-size: 28px;
+  font-weight: bold;
+  color: #aaa;
+}
+
+#modal-content span:hover {
+  color: #000; /* Color al pasar el ratón */
+}
+
+/* Estilos para la tabla */
+#data-table {
+  width: 100%;
+  border-collapse: collapse; /* Combina bordes */
+  margin-top: 20px; /* Espacio superior */
+}
+
+#data-table th, #data-table td {
+  border: 1px solid #ddd; /* Bordes de la tabla */
+  padding: 12px; /* Espacio interno */
+  text-align: left; /* Alineación del texto */
+}
+
+#data-table th {
+  background-color: #f2f2f2; /* Fondo para encabezados */
+  color: #333; /* Color del texto */
+}
+
+#data-table tr:nth-child(even) {
+  background-color: #f9f9f9; /* Color de filas alternas */
+}
+
+#data-table tr:hover {
+  background-color: #ddd; /* Color de fila al pasar el ratón */
+}
+
+/* Estilo para el texto en la ventana emergente */
+#modal-content h2 {
+  text-align: center; /* Centra el encabezado */
+  margin-bottom: 20px; /* Espacio inferior */
+}
+
+</style>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding-bottom: 50px; /* Espacio para el footer fijo */
+    }
+    .content {
+        padding: 20px;
+    }
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        font-size: 14px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+</style>
+<footer>
+  &copy; 2024 - Mi Proyecto Farmacia - 
+  Aut: Manuel Ricardo Chamorro Ruano - 
+    Desarrollador del Sitio 
+</footer>
+<!--<script src="/js/app.js"></script>-->
+</body>
+</html>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Insumos Consumibles</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <style>
+      
+      /* Estilos del banner */
+      .banner {
+        background-image: url('/img/fond.jpg'); /* Imagen de fondo del banner */
+        background-size: cover;
+        background-position: center;
+        color: rgb(29, 26, 26);
+        text-align: center;
+        padding: 50px 0;
+      }
+  
+      .banner h1 {
+        font-size: 3em;
+        margin: 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+      }
+  
+      /* Estilos del nav */
+      nav {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        background-color: rgba(0, 0, 0, 0.6); /* Fondo transparente oscuro */
+        padding: 10px;
+        border-radius: 5px;
+      }
+  
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.2em;
+        padding: 10px 20px;
+        border-radius: 5px;
+        background-color: #007BFF;
+        transition: background-color 0.3s ease;
+      }
+  
+      nav a:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+  
+    <!-- Navegación -->
+    <nav>
+      <a href="/php/profile.html">Mi Perfil</a>
+      <a href="/menu.html">Atras</a>
+      <a href="/logout">Cerrar Sesión</a>
+    </nav>
+  </header>
+  <div class="banner">
+  <h1>Bienvenido a Insumos Consumibles</h1>
+  </div>
+  <section>
+<style>
+    /* Aquí ajustamos el estilo de los botones y contenedores */
+    .menu-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 50px auto;
+      width: 80%;
+    }
+
+    .menu-item {
+      text-align: center;
+    }
+
+    .menu-item img {
+      width: 200px;
+      height: 150px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .menu-item p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    .menu-item a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu-item a:hover {
+      background-color: #0056b3;
+    }
+
+    /* Estilo general de la página */
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .menu-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 20px;
+      background-color: #f9f9f9;
+  }
+  
+  .menu-item {
+      text-align: center;
+      margin: 0 20px;
+  }
+  
+  .menu-item img {
+      width: 150px;
+      height: auto;
+      margin-bottom: 10px;
+  }
+  
+  .menu-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+  }
+  
+  .menu-button:hover {
+      background-color: #0056b3;
+  }
+
+  .img { width: 200px; }
+
+  body {
+    background-image: url('/mi_proyecto/img/red.jpg');
+    background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Mantiene la imagen fija al hacer scroll */
+  }
+  
+  </style>
+<!---->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+    }
+    .menu-container {
+        margin: 20px;
+    }
+    .menu-item {
+        cursor: pointer;
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+        margin-bottom: 5px; /* Espaciado entre opciones */
+    }
+    .dropdown {
+        display: none; /* Inicialmente oculto */
+        opacity: 0; /* Inicialmente oculto para animación */
+        transition: opacity 0.5s ease, max-height 0.5s ease; /* Transición de opacidad y altura */
+        max-height: 0; /* Altura máxima para la animación */
+        overflow: hidden; /* Ocultar contenido excedente */
+        margin-top: 5px; /* Espacio entre el botón y el menú */
+        background-color: #0088f7;
+        border: 1px solid #363232;
+        border-radius: 5px;
+    }
+    .dropdown-item {
+        padding: 10px;
+        cursor: pointer;
+    }
+    .dropdown-item:hover {
+        background-color: #e7e7e7;
+    }
+    .banner {
+        margin: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        margin: auto;
+        display: none; /* Inicialmente oculto */
+    }
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    button {
+        background-color: #2bcef7;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+
+<center>
+<div class="menu-container">
+    <!-- Opción 1: Medicamentos -->
+    <div class="menu-item" onclick="toggleDropdown()">
+        <p>Farmacia</p>
+    <!-- Menú Desplegable -->
+    <div class="dropdown" id="dropdownMenu">
+        <div class="dropdown-item" onclick="showForm('Solicitud')">Solicitud</div>
+        <div class="dropdown-item" onclick="showBanner('Consultar')">Consultar</div>
+        <div class="dropdown-item" onclick="showBanner('Reportes')">Reportes</div>
+    </div>
+  </div>
+
+    <!-- Opción 2: Insumos Consumibles -->
+    <div class="menu-item">
+        <a href="">
+            <p>Almacen</p>
+        </a>
+    </div>
+</div>
+</center>
+<div class="banner" id="infoBanner" style="display: none;"></div>
+
+<!-- Formulario de Solicitud -->
+<div class="container" id="contactForm">
+    <h2>Formulario de Solicitud</h2>
+    <form action="/php/tu_script.php" method="post">
+      <label for="name">Nombre de Solicitante:</label>
+        <input type="nombre" id="nombre" name="nombre" required>
+  
+      <label for="name">Servicio:</label>
+        <select type="text" id="servicio" name="servicio" required>
+          <option value="" disabled selected></option>
+          <option value="Hospitalizacion 1">Hospitalizacion 1</option>
+          <option value="Hospitalizacion 2">Hospitalizacion 2</option>
+          <option value="QX-(Quirofano)">QX-(Quirofano)</option>
+          <option value="Sala de Partos">Sala de Partos</option>
+          <option value="UCI">UCI</option>
+          <option value="Urgencias">Urgencias</option>
+
+        </select>
+
+        <label for="name">Tipo de Pedido</label><!--hacer desplegable-->
+        <select type="text" id="pedido" name="pedido" required>
+          <option value="" disabled selected></option>
+          <option value="Pedido Insumos">Pedido Insumos</option>
+
+        </select>
+
+        <label for="articulo">Articulo de Pedido:</label>
+        <input type="text" id="articulo" name="articulo" placeholder="Escribe el artículo" oninput="buscarArticulo()" autocomplete="off" required>
+        <div id="sugerencias"></div>
+        
+        <!-- Campo para ingresar un nuevo artículo solo si seleccionan "Otro" -->
+        <div id="otro-articulo-container" style="display:none;">
+            <label for="otro-articulo">Especifica otro artículo:</label>
+            <input type="text" id="otro-articulo" name="otro_articulo">
+        </div>
+        
+        <script>
+          function buscarArticulo() {
+            var input = document.getElementById('articulo').value;
+        
+            if (input.length > 1) {  // Empieza a buscar después de que se hayan escrito al menos 2 caracteres
+                console.log("Buscando el artículo: " + input); // <-- Agregar esta línea para depuración
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', './mi_proyecto/php/buscar_articulos.php?q=' + input, true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        console.log("Respuesta recibida:", xhr.responseText); // <-- Agregar esta línea para verificar la respuesta
+                        document.getElementById('sugerencias').innerHTML = xhr.responseText;
+                    }
+                };
+                xhr.send();
+            } else {
+                document.getElementById('sugerencias').innerHTML = '';  // Limpia las sugerencias si el input es vacío
+            }
+        }
+        
+        
+        function seleccionarArticulo(valor) {
+            document.getElementById('articulo').value = valor;
+            document.getElementById('sugerencias').innerHTML = '';  // Borra las sugerencias una vez seleccionado el artículo
+        
+            // Llama a la función para mostrar u ocultar el campo "Otro" si es necesario
+            mostrarOtroArticulo();
+        }
+        
+        function mostrarOtroArticulo() {
+            var input = document.getElementById('articulo').value;
+        
+            // Muestra el campo de "Otro" solo si el usuario seleccionó "Otro"
+            if (input === 'Otro') {
+                document.getElementById('otro-articulo-container').style.display = 'block';
+            } else {
+                document.getElementById('otro-articulo-container').style.display = 'none';
+            }
+        }
+        </script>
+        
+        
+        
+        <label for="name">Cantidad a Solicitar:</label>
+        <input type="name" id="name" name="name" required>
+
+        <label for="name">Obcervaciones:</label>
+        <textarea id="Obcervaciones" name="Obcervaciones" rows="4" required></textarea>
+
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+
+<script>
+    function toggleDropdown() {
+        const dropdown = document.getElementById('dropdownMenu');
+        if (dropdown.style.display === 'block') {
+            dropdown.style.opacity = 0; // Ocultar con animación
+            dropdown.style.maxHeight = 0; // Colapsar
+            setTimeout(() => {
+                dropdown.style.display = 'none'; // Ocultar después de la animación
+            }, 500); // Duración de la animación
+        } else {
+            dropdown.style.display = 'block'; // Mostrar el menú
+            setTimeout(() => {
+                dropdown.style.opacity = 1; // Mostrar con opacidad
+                dropdown.style.maxHeight = '200px'; // Expandir a una altura máxima
+            }, 10); // Breve retardo para aplicar la animación
+        }
+    }
+  // Función para mostrar el formulario con una animación suave
+  function showForm(option) {
+    const contactForm = document.getElementById('contactForm');
+    contactForm.style.display = 'block'; 
+    setTimeout(() => { // Se añade un pequeño retraso para activar la animación después de mostrar
+      contactForm.style.opacity = 1;
+    }, 100);
+
+    // Ocultar el menú desplegable
+    document.getElementById('dropdownMenu').style.display = 'none';
+  }
+
+  // Función para mostrar el banner de información con el texto del item seleccionado
+  function showBanner(option) {
+    const banner = document.getElementById('infoBanner');
+    banner.innerHTML = 'Has seleccionado: ' + option;
+    banner.style.display = 'block';
+    banner.style.opacity = 0;
+    setTimeout(() => {
+      banner.style.opacity = 1;
+    }, 300);
+
+    // Ocultar el menú desplegable
+    document.getElementById('dropdownMenu').style.display = 'none';
+  }
+
+
+    // Cerrar el menú al hacer clic fuera de él
+    window.onclick = function(event) {
+        if (!event.target.matches('.menu-item')) {
+            const dropdowns = document.getElementsByClassName("dropdown");
+            for (let i = 0; i < dropdowns.length; i++) {
+                const openDropdown = dropdowns[i];
+                if (openDropdown.style.display === 'block') {
+                    openDropdown.style.opacity = 0; // Ocultar con animación
+                    openDropdown.style.maxHeight = 0; // Colapsar
+                    setTimeout(() => {
+                        openDropdown.style.display = 'none'; // Ocultar después de la animación
+                    }, 500); // Duración de la animación
+                }
+            }
+        }
+    };
+</script>
+<script>
+  // Función para ocultar todo el contenido antes de mostrar uno nuevo
+  function hideAllContent() {
+    // Ocultar el formulario y el banner
+    const contactForm = document.getElementById('contactForm');
+    const banner = document.getElementById('infoBanner');
+
+    // Ocultar directamente sin animación
+    if (contactForm) {
+      contactForm.style.display = 'none';
+    }
+
+    if (banner) {
+      banner.style.display = 'none';
+    }
+  }
+
+  // Función para mostrar el formulario
+  function showForm(option) {
+    hideAllContent();  // Ocultar el contenido anterior
+    const contactForm = document.getElementById('contactForm');
+    contactForm.style.display = 'block';
+
+    // Ocultar el menú desplegable
+    document.getElementById('dropdownMenu').style.display = 'none';
+  }
+
+  // Función para mostrar el banner de información con el texto del ítem seleccionado
+  function showBanner(option) {
+    hideAllContent();  // Ocultar el contenido anterior
+    const banner = document.getElementById('infoBanner');
+    banner.innerHTML = 'Has seleccionado: ' + option;
+    banner.style.display = 'block';
+
+    // Ocultar el menú desplegable
+    document.getElementById('dropdownMenu').style.display = 'none';
+  }
+</script>
+<script src="/js/app.js"></script>
+</body>
+</html>
